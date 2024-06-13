@@ -18,7 +18,7 @@ module.exports = (logSources, printer) => {
     currentLogSource = store.dequeue();
     printer.print(currentLogSource.last);
     nextLogOrDrained = currentLogSource.pop();
-    if (!nextLogOrDrained) {
+    if (nextLogOrDrained === false) {
       continue;
     }
     store.enqueue(currentLogSource, nextLogOrDrained.date);
