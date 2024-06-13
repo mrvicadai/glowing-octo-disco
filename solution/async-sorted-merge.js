@@ -16,6 +16,7 @@ module.exports = (logSources, printer) => {
     return new Promise((resolve, reject) => {
       if (store.isEmpty()) {
         resolve(console.log("Async sort complete."));
+        printer.done();
         return;
       }
 
@@ -28,7 +29,7 @@ module.exports = (logSources, printer) => {
           if (logOrDrained !== false) {
             store.enqueue(logSource, logOrDrained.date);
           }
-          return next().then(() => resolve());
+          return next();
         })
         .catch(reject);
     });

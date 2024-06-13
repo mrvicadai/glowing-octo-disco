@@ -23,4 +23,6 @@ module.exports = (logSources, printer) => {
     }
     store.enqueue(currentLogSource, nextLogOrDrained.date);
   }
+
+  printer.done();
 };
